@@ -54,7 +54,7 @@ for page_number in range(NUM_PAGES):
                 else:
                     key_skills[item] = 1
 
-            # time.sleep(1)
+            time.sleep(1)
 
 #print(key_skills)
 

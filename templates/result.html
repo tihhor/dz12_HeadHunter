@@ -6,14 +6,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Мегапарсер</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/static/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -25,13 +25,13 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
             <div class="container">
-                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Мегапарсер НН</a>
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="main_page">Мегапарсер НН</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Главная</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="query_form.html">Поиск</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="result.html">Результат</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="main_page">Главная</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="query_form">Поиск</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="result">Результат</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,46 +48,53 @@
                                 <span class="section-heading-upper">Вот что</span>
                                 <span class="section-heading-lower">мы нашли</span>
                             </h3>
-                            <h3>Параметры</h3>
-                        <!--    ol - нумерованные список-->
-                            <ol>
-                                <li>python</li>
-                                <li>в названии компании</li>
-                            </ol>
 
-                            <h3>Навыки</h3>
-                        <!--    ul - список-->
-                            <ul>
-                                <li>python</li>
-                                <li>sql</li>
-                                <li>git</li>
-                            </ul>
+                                 <!-- Post Content -->
+                              <article>
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col-lg-8 col-md-10 mx-auto">
 
-                            <p> </p>
-                            <p> </p>
+                                      {% if data %}
+                                        <ul>
+                                          Поисковый запрос:
+                                          {{data['request_text']}}
+                                        </ul>
+                                        <ul>
+                                          Количество вакансий:
+                                          {{data['vacancies_total']}}
+                                        </ul>
+                                        <ul>
+                                          Средняя зарплата:
+                                          {{data['average_salary']}}
+                                        </ul>
 
-                            <h3>Результаты запроса</h3>
+                                        <table class="table">
+                                          <tr>
+                                              <th>Востребованные навыки</th>
+                                              <th>Количество</th>
+                                          </tr>
+                                          {% for item in data['key_skills'] %}
+                                            <tr>
+                                                <td>{{item[0]}}</td>
+                                                <td>{{item[1]}}</td>
+                                            </tr>
 
-                            <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    1.
-                                    <span class="ms-auto">Python developer</span>
-                                    <span class="ms-auto">Программирование на Python</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    2.
-                                    <span class="ms-auto">Java developer</span>
-                                    <span class="ms-auto">Программирование на Java</span>
-                                </li>
-                                <li class="list-unstyled-item list-hours-item d-flex">
-                                    3.
-                                    <span class="ms-auto">Web design</span>
-                                    <span class="ms-auto">Дизайн Web интерфейса</span>
-                                </li>
+                                          {% endfor %}
 
-                            </ul>
+                                        </table>
 
-                            <a href="index.html">На главную</a>
+                                      {% else %}
+                                          Данных нет
+                                      {% endif %}
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </article>
+
+
+                            <a href="main_page">На главную</a>
 
                             <p> </p>
 
@@ -104,11 +111,11 @@
 
 
         <footer class="footer text-faded text-center py-5">
-            <div class="container"><p class="m-0 small">Copyright &copy; Tihhor DZ13 2022</p></div>
+            <div class="container"><p class="m-0 small">Copyright &copy; E.Trofimov DZ16 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="/static/js/scripts.js"></script>
     </body>
 </html>

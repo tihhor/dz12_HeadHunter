@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, json
+from hh_sql import save_data
 
 from hh_requests import hh_search
 
@@ -51,9 +52,8 @@ def query_form_post():
     data = request.form['query_string']
     request_result = hh_search(data)
     print(request_result)
-    # return render_template('query_form.html', data=request_result)
+    save_data(request_result)
     return render_template('result.html', data=request_result)
-
 
 @app.route('/query_form/', methods=['GET'])
 def query_form_get():

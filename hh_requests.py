@@ -3,7 +3,6 @@ import pprint
 import time
 import json
 
-
 # request_text = input('Введите запрос для поиска вакансий:')
 request_text = ''
 
@@ -74,6 +73,6 @@ def  hh_search(request_text):
     with open('request_result.json', "w", encoding="utf-8") as file:
         json.dump(request_result, file)
 
-    print('Результат сохранен в файле request_result.json')
+    # print('Результат сохранен в файле request_result.json')
 
     return (request_result)

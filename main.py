@@ -52,7 +52,7 @@ def result3():
 def query_form_post():
     data = request.form['query_string']
     request_result = hh_search(data)
-    print(request_result)
+    # print(request_result)
     # сохранение в базу данных через интерфейс  SQLite
     # save_data(request_result)
     # сохранение в базу данных через инттерфейс  ORM

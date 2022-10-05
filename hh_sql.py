@@ -2,6 +2,7 @@ import sqlite3
 from datetime import datetime
 from hh_requests import hh_search
 
+#копия БД выложена в репозиторий GitHub
 def save_data(data):
     # Подключение к базе данных
     conn = sqlite3.connect('dz17sqlite.db')
